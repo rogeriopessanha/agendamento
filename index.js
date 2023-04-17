@@ -2,9 +2,9 @@
 const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
+const appointmentService = require("./services/AppointmentService")
+const AppointmentService = require("./services/AppointmentService")
 
-const consultaService = require("./services/ConsultaService")
-const ConsultaService = require("./services/ConsultaService")
 
 app.use(express.static("public"))
 
@@ -26,13 +26,13 @@ app.get("/cadastro", (req, res) => {
 
 app.post("/create", async (req, res) => {
 
-    let status = await consultaService.Create(
-        req.body.nome,
+    var status = await appointmentService.Create(
+        req.body.name,
         req.body.email,
         req.body.cpf,
-        req.body.assunto,
-        req.body.data,
-        req.body.hora
+        req.body.description,
+        req.body.date,
+        req.body.time
         )
 
     if (status) {
@@ -44,9 +44,46 @@ app.post("/create", async (req, res) => {
 })
 
 app.get("/calendario", async (req, res) => {
-    let consultas = await ConsultaService.getAll(false)
-    res.json(consultas)
+    var appointments = await appointmentService.GetAll(false)
+    res.json(appointments)
 })
+
+app.get("/event/:id", async(req, res) => {
+    var appointment = await appointmentService.GetById(req.params.id)
+    console.log(appointment)
+    res.render("event", {appo: appointment})
+})
+
+app.post("/finish", async(req, res) => {
+    var id = req.body.id
+    var result = await appointmentService.finish(id)
+    res.redirect("/")
+})
+
+app.get("/list", async(req, res) => {
+
+    var appos = await appointmentService.GetAll(true)
+    res.render("list", {appos})
+})
+
+app.get("/searchresult", async (req, res)=>{
+    var appos = await appointmentService.search(req.query.search) 
+    if (appos != " ") {
+        res.render("list",{appos});
+   } else {
+     res.redirect("/list");  
+   }
+});
+
+// a cada 5 minutos vai verificar se tem alguma
+//notificação para ser enviada pro email
+var pollTime = 1000 * 60 * 5
+
+setInterval(async () => {
+    await appointmentService.SendNotification()
+
+    
+},pollTime)
 
 
 app.listen(3000, () => {})

@@ -12,12 +12,12 @@
     <h1>Cadastro de consulta</h1>
     <hr>
     <form method="POST" action="/create">
-        <input type="text" name="nome" id="nome" placeholder="nome do paciente" class="form-control">
-        <input type="email" name="email" id="email" placeholder="digite seu email" class="form-control">
-        <input type="text" name="cpf" id="cpf" placeholder="CPF" class="form-control cpf">
-        <input type="text" name="assunto" id="assunto" placeholder="Assunto" class="form-control">
-        <input type="date" name="data" id="data" placeholder="14/04/2023" class="form-control">
-        <input type="time" name="hora" id="hora" class="form-control">
+        <input type="text" name="name" id="name" placeholder="nome do paciente" class="form-control" required>
+        <input type="email" name="email" id="email" placeholder="digite seu email" class="form-control" required>
+        <input type="text" name="cpf" id="cpf" placeholder="CPF" class="form-control cpf" required>
+        <input type="text" name="description" id="description" placeholder="Assunto" class="form-control" required>
+        <input type="date" name="date" id="data" placeholder="14/04/2023" class="form-control" required>
+        <input type="time" name="time" id="time" class="form-control" required>
         <button class="btn btn-success">Agendar</button>
     </form>
 </body>

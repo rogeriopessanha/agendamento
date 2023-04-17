@@ -6,9 +6,10 @@ const consulta = new mongoose.Schema({
     email: String,
     cpf: String,
     assunto: String,
-    data: Date,
-    hora: String,
-    finalizada: Boolean
+    date: Date,
+    time: String,
+    terminado: Boolean,
+    notificado: Boolean
 })
 
 module.exports = consulta

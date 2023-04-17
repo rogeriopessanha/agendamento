@@ -1,27 +1,27 @@
 
-var consulta = require("../models/Consulta")
+var appointment = require("../models/Appointment")
 var mongoose = require("mongoose")
-var ConsultaFactory = require("../factories/ConsultaFactory")
+var AppointmentFactory = require("../factories/AppointmentFactory")
 var nodemailer = require("nodemailer")
 
-const Consult = mongoose.model("Consulta", consulta)
+const Appo = mongoose.model("Appointment", appointment)
 
-class ConsultaService {
+class AppointmentService {
 
-    async Create(nome, email, cpf, assunto, date, time) {
-        let novaConsult = new Consult({
-            nome,
+    async Create(name, email, cpf, description, date, time) {
+        let newAppo = new Appo({
+            name,
             email,
-            assunto,
+            description,
             cpf,
             date,
             time,
-            terminado: false,
-            notificado: false
+            finished: false,
+            notified: false
         })
 
         try {
-            await novaConsult.save()
+            await newAppo.save()
             return true
         } catch (erro) {
             console.log(erro)
@@ -29,26 +29,26 @@ class ConsultaService {
         }
     }
 
-    async GetAll(finalizado) {
-        if (finalizado) {
-            return await Consult.find()
+    async GetAll(showFinished) {
+        if (showFinished) {
+            return await Appo.find()
         } else {
-            var consults = await Consult.find({ "terminado": false })  
-            var consultas = []
+            var appos = await Appo.find({ "finished": false })  
+            var appointments = []
             
-            consults.forEach(consulta => {
+            appos.forEach(appointment => {
 
-                if (consulta.data != undefined) {
-                    consultas.push(ConsultaFactory.Build(consulta))
+                if (appointment.date != undefined) {
+                    appointments.push(AppointmentFactory.Build(appointment))
                 }   
             })
-            return consultas
+            return appointments
         }
     }
 
     async GetById(id){
         try{
-            var event = await Consult.findOne({'_id': id})
+            var event = await Appo.findOne({'_id': id})
             return event
         }catch(erro){
             console.log(erro)
@@ -57,7 +57,7 @@ class ConsultaService {
 
     async finish(id){
         try{
-            await Consult.findByIdAndUpdate(id, {terminado: true})
+            await Appo.findByIdAndUpdate(id, {finished: true})
             return true
         }catch(erro){
             console.log(erro)
@@ -65,11 +65,12 @@ class ConsultaService {
         }
     }
 
-    async search(pesquisa){
+  
+    async search(query){
 
         try{
-            var consults = await Consult.find().or([{cpf: pesquisa}, {email: pesquisa}])
-            return consults
+            var appos = await Appo.find().or([{cpf: query}, {email: query}])
+            return appos
         }catch(erro){
             console.log(erro)
             return[]
@@ -79,7 +80,7 @@ class ConsultaService {
 
     async SendNotification(){
 
-        var consults = await this.GetAll(false)
+        var appos = await this.GetAll(false)
 
         var transporter = nodemailer.createTransport({
             host: "sandbox.smtp.mailtrap.io",
@@ -90,22 +91,22 @@ class ConsultaService {
             }
         })
 
-        consults.forEach(async app => {
+        appos.forEach(async app => {
             var date = app.start.getTime()
             var hour = 1000 * 60 * 60 * 12
             var gap = date-Date.now()
 
             if (gap <= hour) {
 
-                if (!app.notificado) {
+                if (!app.notified) {
 
-                    await Consult.findByIdAndUpdate(app.id, {notificado: true})
+                    await Appo.findByIdAndUpdate(app.id, {notified: true})
 
                     transporter.sendMail({
                         from: "Confirmação do Agendamento <notificacao_agendamento@gmail.com>",
                         to: app.email,
                         subject: "Lembrete: Consulta agendada",
-                        text: "Sua consulta está marcada para daqui a 12 horas, não se esqueça.",
+                        text: "Sua consulta está marcada para daqui a 12 horas, não se esqueça",
                     }).then(() => {
 
                     }).catch(erro => {
@@ -117,5 +118,5 @@ class ConsultaService {
     }
 }
 
-module.exports = new ConsultaService()
+module.exports = new AppointmentService()
 
