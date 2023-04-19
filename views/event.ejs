@@ -1,0 +1,45 @@
+<%- include('./partials/navbar.ejs') %>
+    <hr>
+        <h1 class="text-center"><i class="fas fa-check-circle"></i> Visualizar Consulta</h1>
+    <hr>
+    <div class="container">
+        <div class="card shadow p-3 mb-5 bg-body rounded">
+            <div class="card-body">
+                <form method="post" action="/finish">
+                    <div class="input-group mb-4 shadow-sm" disabled="">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user-plus"></i></span>
+                        <input class="form-control" disabled type="text" name="name" id="name" placeholder="Nome do paciente"  autocomplete="off" value="<%= result.name %>" />
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="input-group mb-4 shadow-sm">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
+                                <input class="form-control" disabled type="email" name="email" id="email" placeholder="E-mail do paciente" autocomplete="off" value="<%= result.email %>" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="input-group mb-4 shadow-sm">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-id-card"></i></span>
+                                <input class="form-control cpf" disabled type="text" name="cpf" id="cpf" placeholder="CPF do paciente" autocomplete="off" value="<%= result.cpf %>" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-4 shadow-sm">
+                        <span class="input-group-text"><i class="fas fa-edit"></i></span>
+                        <textarea class="form-control" disabled name="description" id="description" placeholder="Descrição / Observações" style="height: 10px; resize: none;"><%= result.description %></textarea>
+                    </div>
+
+                    <input type="hidden" name="id" value="<%= result._id %>">
+                    <% if(!result.finished){ %>
+                    <div class="d-grid mt-3">
+                        <button class="btn btn-success">Finalizar Consulta</button>
+                    </div>
+                    <% } %>
+                </form>
+            </div>
+        </div>
+    </div>
+<%- include('./partials/footer.ejs') %>
+

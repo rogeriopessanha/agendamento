@@ -1,32 +1,8 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema</title>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js"></script> -->
-</head>
-<body>
-
-    <div id="calendar"></div>
-    
-</body>
-
-<script>
- 
-    document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                
-            initialView: 'dayGridMonth',
-            locale: 'pt-br'
-            });
-            calendar.render();
-        });
- 
-</script>
-
-<script src="dist/index.global.min.js"></script>
-</html>
+<%- include('./partials/navbar.ejs') %>
+    <hr>
+        <h1 class="text-center"><i class="far fa-calendar-check"></i> Calendário</h1>
+    <hr>
+    <div class="container p-5">
+        <div id="calendar"></div>
+    </div>
+<%- include('./partials/footer.ejs') %>
