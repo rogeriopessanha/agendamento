@@ -46,8 +46,19 @@ A aplicação será executada na porta 3000.
 
 ## Funcionamento
 ### Versão mobile
+<h1 align="center">
+  <img  height="550px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/video/agendamento-mobile.mp4" />
+</h1>
 
 ### Versão desktop
+<h1 align="center">
+  <img width="650px" height="650px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/video/agendamento-desktop.mp4" />
+</h1>
+
+### Encerrando a consulta e apagando do calendario
+<h1 align="center">
+  <img width="650px" height="650px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/video/agendamento_finalizando_consulta.mp4" />
+</h1>
 
 
 ##
