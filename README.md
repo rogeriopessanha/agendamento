@@ -1,5 +1,3 @@
-🚀 🎯 🔎 💻 📝 ✒️
-
 # Sistema de Agendamento
 ## 📝 Proposta:
 ### Este é um projeto de um sistema de agendamento, que permite agendar consultas em um calendário interativo.
@@ -19,13 +17,13 @@
 - jQuery Mask Plugin CPF: É uma extensão que permite criar uma máscara de entrada de dados para campos de CPF em formulários
 - Mailtrap: serviço de teste de e-mail para desenvolvedores.
 
-## Clonando o repositório
+## 🎯 Clonando o repositório
 ### Clone o repositório para a sua máquina local usando o comando:
 
 ```
 git clone https://github.com/rogeriopessanha/agendamento.git
 ```
-## Dependências
+## 📌 Dependências
 <h1 align="left">
   <img width="250px" height="200px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/img/dependencias.png" />
 </h1>
