@@ -16,6 +16,7 @@
 - FullCalendar: biblioteca JavaScript para criar calendários interativos.
 - Bootstrap: framework front-end que facilita o desenvolvimento de interfaces web responsivas.
 - Dotenv: módulo Node.js que carrega variáveis de ambiente a partir de um arquivo .env.
+- jQuery Mask Plugin CPF: É uma extensão que permite criar uma máscara de entrada de dados para campos de CPF em formulários
 - Mailtrap: serviço de teste de e-mail para desenvolvedores.
 
 ## Clonando o repositório
@@ -29,14 +30,14 @@ git clone https://github.com/rogeriopessanha/agendamento.git
   <img width="250px" height="200px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/img/dependencias.png" />
 </h1>
 
-## Instalando as dependências
+## 🔧 Instalando as dependências
 ### Instale as dependências do projeto utilizando o gerenciador de pacotes npm ou yarn, executando o comando:
 
 ```
 npm install ou yarn add
 ```
 
-## Executando a aplicação
+## 🚀 Executando a aplicação
 #### Para iniciar a aplicação, execute o comando:
 
 ```
@@ -44,22 +45,32 @@ npm start ou node index
 ```
 A aplicação será executada na porta 3000.
 
-## Funcionamento
+## ⚙️ Funcionamento
+
 ### Versão mobile
 <h1 align="center">
-  <img  height="550px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/video/agendamento-mobile.mp4" />
+  <img  height="550px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/video/agendamento-mobile.gif" />
 </h1>
 
 ### Versão desktop
 <h1 align="center">
-  <img width="650px" height="650px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/video/agendamento-desktop.mp4" />
+  <img width="650px" height="650px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/video/agendamento_desktop.gif" />
 </h1>
 
-### Encerrando a consulta e apagando do calendario
+###  Demonstração de como é possível fazer uma busca pelo paciente, consultando pelo CPF ou e-mail e finalizando a consulta e apagando do calendario
 <h1 align="center">
-  <img width="650px" height="650px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/video/agendamento_finalizando_consulta.mp4" />
+  <img width="650px" height="650px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/video/finalizando_agendamento.gif" />
 </h1>
 
+## 🔎 E-mail de lembrete para a consulta, sempre que faltar 12 horas para a consulta, o paciente vai ser notificado por e-mail, assim não correndo o risco de esquecer.
+### Informações importantes:
+- From: E-mail da clinica/hospital
+- To: E-mail do paciente 
+- subject: "Lembrete: Consulta agendada"
+- Mensagem: "Sua consulta está marcada para daqui a 12 horas, não se esqueça, "nome do paciente" e "o tipo de procedimento"
+<h1 align="left">
+  <img width="1000px" height="400px" src="https://github.com/rogeriopessanha/agendamento/blob/main/public/assets/readme/img/email1.png" />
+</h1>
 
 ##
 ## ✒️ Autor
