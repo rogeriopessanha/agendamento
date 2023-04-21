@@ -105,7 +105,7 @@ class AppointmentService {
                         from: "Confirmação Agendamento <notificacao_agendamento@gmail.com>",
                         to: r.email,
                         subject: "Lembrete: Consulta agendada",
-                        text: `Sua consulta está marcada para daqui a 12 horas, não se esqueça ${r.title}`,
+                        text: `Sua consulta está marcada para daqui a 12 horas, não se esqueça, ${r.title}`,
                     }).then(async () => {
                         await Appo.findByIdAndUpdate(r.id, {notified: true});
                     }).catch(erro => {
