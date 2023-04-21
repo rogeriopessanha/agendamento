@@ -2,7 +2,7 @@
 ## 📝 Proposta:
 ### Este é um projeto de um sistema de agendamento, que permite agendar consultas em um calendário interativo.
 ### Além disso, também foi implementado uma função para o paciente receber um lembrete por e-mail quando estiver faltando 12 horas para sua consulta.
-### Depois da consulta encerrada presencialmente, é feito uma finalização no sistem, apagando a consulta no calendário.
+### Depois da consulta encerrada presencialmente, é feito uma finalização no sistema e apagando a consulta do calendário.
 
 
 ## 💻 Tecnologias e ferramentas utilizadas:
